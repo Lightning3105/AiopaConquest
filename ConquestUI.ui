@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface>
+  <object class="ttk.Frame" id="Main Menu">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <layout>
+      <property name="column">0</property>
+      <property name="columnspan">3</property>
+      <property name="propagate">True</property>
+      <property name="row">0</property>
+      <property name="rowspan">3</property>
+      <rows>
+        <row id="0">
+          <property name="minsize">0</property>
+          <property name="pad">0</property>
+          <property name="weight">0</property>
+        </row>
+        <row id="1">
+          <property name="minsize">0</property>
+        </row>
+        <row id="2">
+          <property name="minsize">0</property>
+        </row>
+        <row id="3">
+          <property name="minsize">0</property>
+        </row>
+      </rows>
+      <columns>
+        <column id="0">
+          <property name="minsize">0</property>
+        </column>
+      </columns>
+    </layout>
+    <child>
+      <object class="ttk.Label" id="Label_1">
+        <property name="justify">left</property>
+        <property name="text" translatable="yes">Current Research:</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="Label_2">
+        <property name="justify">left</property>
+        <property name="text" translatable="yes">Gold:</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="ipadx">32</property>
+          <property name="propagate">True</property>
+          <property name="row">4</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="Label_3">
+        <property name="justify">left</property>
+        <property name="text" translatable="yes">Piety:</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="ipadx">32</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="Label_4">
+        <property name="text" translatable="yes">Culture:</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="ipadx">25</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="GoldLabel">
+        <property name="text" translatable="yes">GOLD</property>
+        <property name="textvariable">string:GoldString</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">4</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="ResearchLabel">
+        <property name="text" translatable="yes">RESEARCH</property>
+        <property name="textvariable">string:ResearchString</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="PietyLabel">
+        <property name="text" translatable="yes">PIETY</property>
+        <property name="textvariable">string:PietyString</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="CultureLabel">
+        <property name="text" translatable="yes">CULTURE</property>
+        <property name="textvariable">string:CultureString</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Progressbar" id="Research Progress">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Progressbar" id="Piety Progress">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Progressbar" id="Culture Progress">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Text" id="Out Box">
+        <property name="height">10</property>
+        <property name="state">disabled</property>
+        <property name="width">50</property>
+        <layout>
+          <property name="column">4</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+          <property name="rowspan">8</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
