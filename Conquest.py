@@ -1,6 +1,12 @@
 import easygui as eg
 import random as r
 
+try:
+    import tkinter as tk
+except:
+    import Tkinter as tk
+import pygubu
+
 class country():
     def __init__(self, leader="", name="", race="", cities=[], cash=0, science=0, culture=0, piety=0, religion="", policies=[], discoveries=[]):
         self.leader = leader
@@ -14,6 +20,10 @@ class country():
         self.policies = policies
         self.cities = cities
         self.discoveries = discoveries
+    def GPT(self):
+        return 3
+    def CPT(self):
+        return 2
 
 class race():
     def __init__(self, name="", nameish="", description="", science=0, Stcash=0, Incash=0, culture=0, piety=0, discoveries=[], attack=0, defend=0, popgrowth=0, startUnit=""):
@@ -57,7 +67,6 @@ class location():
             self.cliW = "Dry"
         elif self.climate > 0:
             self.cliW = "Very Dry"
-        string = "
 
 def rank(item, minmax):
     rng = abs(minmax[0] - minmax[1])
@@ -74,7 +83,7 @@ def rank(item, minmax):
         string = "Very Low"
     else:
         print(item, minmax, "ERROR")
-        
+
 
 
 def say(*words):
@@ -119,10 +128,11 @@ def terrain(size, blobsize):
         for j in range(1, blobsize):
             place = location(r.randint(-2, 10), r.randint(0, 10), bool(r.getrandbits(1)), r.randint(1, 10))
             island.append(place)
-            
+
 
 def begin():
     say("Welcome to Aiopa Conquest!")
+    global player
 
     player = country()
 
@@ -130,6 +140,40 @@ def begin():
     player.name = enter("What is your country's name?")
 
     player.race = carosel("Select your race:", races)
-    
+
+#init()
+#begin()
+
+class Application:
+    def __init__(self, master):
+
+        #1: Create a builder
+        self.builder = builder = pygubu.Builder()
+
+        #2: Load an ui file
+        builder.add_from_file('ConquestUI.ui')
+
+        #3: Create the widget using a master as parent
+        self.mainwindow = builder.get_object('Main Menu', master)
+
+        builder.connect_callbacks(self)
+
+        self.refresh()
+
+    def refresh(self):
+        self.builder.get_variable("GoldString").set(str(player.GPT) + "/t")
+        self.builder.get_variable("CultureString").set(str(player.CPT) + "/t")
+
+
+
+
+
+
+
+
+
 init()
 begin()
+root = tk.Tk()
+app = Application(root)
+root.mainloop()
