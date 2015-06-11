@@ -53,10 +53,9 @@ class location():
         self.fertility = fertility
         self.water = water
         self.climate = climate
-    def description():
+    def description(self):
         self.altW = rank(self.altitude, (-2, 10))
         self.fertW = rank(self.fertility, (0,10))
-        self.climate
         if self.climate > 10 - 2:
             self.cliW = "Very Cold"
         elif self.climate > 10 - 2 * 2:
@@ -67,6 +66,7 @@ class location():
             self.cliW = "Dry"
         elif self.climate > 0:
             self.cliW = "Very Dry"
+        return "A " + self.altW + " Plot Of Land With A " + self.cliw + " Climate. The Ground Here Is " + self.fertW + "."
 
 def rank(item, minmax):
     rng = abs(minmax[0] - minmax[1])
@@ -131,15 +131,15 @@ def terrain(size, blobsize):
 
 
 def begin():
-    say("Welcome to Aiopa Conquest!")
+    #say("Welcome to Aiopa Conquest!")
     global player
 
     player = country()
 
-    player.leader = enter("What is your country's leader named?")
-    player.name = enter("What is your country's name?")
+    #player.leader = enter("What is your country's leader named?")
+    #player.name = enter("What is your country's name?")
 
-    player.race = carosel("Select your race:", races)
+    #player.race = carosel("Select your race:", races)
 
 #init()
 #begin()
@@ -154,15 +154,16 @@ class Application:
         builder.add_from_file('ConquestUI.ui')
 
         #3: Create the widget using a master as parent
-        self.mainwindow = builder.get_object('Main Menu', master)
+        self.mainwindow = builder.get_object('Main Window', master)
+        builder.get_object("Map View", self.mainwindow).lower()
 
         builder.connect_callbacks(self)
 
         self.refresh()
 
     def refresh(self):
-        self.builder.get_variable("GoldString").set(str(player.GPT) + "/t")
-        self.builder.get_variable("CultureString").set(str(player.CPT) + "/t")
+        self.builder.get_variable("GoldString").set(str(player.GPT()) + "/t")
+        self.builder.get_variable("CultureString").set(str(player.CPT()) + "/t")
 
 
 
