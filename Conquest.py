@@ -146,6 +146,7 @@ def begin():
 
 class Application:
     def __init__(self, master):
+        self.master = master
 
         #1: Create a builder
         self.builder = builder = pygubu.Builder()
@@ -153,17 +154,23 @@ class Application:
         #2: Load an ui file
         builder.add_from_file('ConquestUI.ui')
 
-        #3: Create the widget using a master as parent
-        self.mainwindow = builder.get_object('Main Window', master)
-        builder.get_object("Map View", self.mainwindow).lower()
+        self.Main_Menu()
 
-        builder.connect_callbacks(self)
-
-        self.refresh()
 
     def refresh(self):
         self.builder.get_variable("GoldString").set(str(player.GPT()) + "/t")
         self.builder.get_variable("CultureString").set(str(player.CPT()) + "/t")
+
+    def Map_View(self):
+        self.mapview = self.builder.get_object("Map View", self.master)
+        self.builder.connect_callbacks(self)
+
+        self.mainmenu.destroy()
+
+
+    def Main_Menu(self):
+        self.mainmenu = self.builder.get_object('Main Menu', self.master)
+        self.builder.connect_callbacks(self)
 
 
 
@@ -176,5 +183,6 @@ class Application:
 init()
 begin()
 root = tk.Tk()
+#root.resizable(width=0, height=0)
 app = Application(root)
 root.mainloop()
