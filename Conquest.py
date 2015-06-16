@@ -153,7 +153,10 @@ class Application:
 
         #2: Load an ui file
         builder.add_from_file('ConquestUI.ui')
-
+        
+        self.mainmenu = self.builder.get_object('Main Menu', self.master)
+        self.mapview = self.builder.get_object("Map View", self.master)
+        self.builder.connect_callbacks(self)
         self.Main_Menu()
 
 
@@ -162,15 +165,10 @@ class Application:
         self.builder.get_variable("CultureString").set(str(player.CPT()) + "/t")
 
     def Map_View(self):
-        self.mapview = self.builder.get_object("Map View", self.master)
-        self.builder.connect_callbacks(self)
-
-        self.mainmenu.destroy()
-
+        self.mapview.tkraise()
 
     def Main_Menu(self):
-        self.mainmenu = self.builder.get_object('Main Menu', self.master)
-        self.builder.connect_callbacks(self)
+        self.mainmenu.tkraise()
 
 
 
