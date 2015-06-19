@@ -424,5 +424,29 @@
         </layout>
       </object>
     </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_1">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="ipadx">68</property>
+          <property name="ipady">37</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_2">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">4</property>
+          <property name="ipadx">68</property>
+          <property name="ipady">37</property>
+          <property name="propagate">True</property>
+          <property name="row">5</property>
+        </layout>
+      </object>
+    </child>
   </object>
 </interface>
