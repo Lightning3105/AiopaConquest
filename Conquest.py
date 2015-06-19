@@ -128,6 +128,7 @@ def terrain(size, blobsize):
         for j in range(1, blobsize):
             place = location(r.randint(-2, 10), r.randint(0, 10), bool(r.getrandbits(1)), r.randint(1, 10))
             island.append(place)
+        world.append(island)
 
 
 def begin():
