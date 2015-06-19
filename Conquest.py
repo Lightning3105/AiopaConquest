@@ -122,6 +122,7 @@ def init():
     races = [dwarves, humans, elves]
 
 def terrain(size, blobsize):
+    global world
     world = []
     for i in range(1, size):
         island = []
@@ -137,10 +138,10 @@ def begin():
 
     player = country()
 
-    #player.leader = enter("What is your country's leader named?")
-    #player.name = enter("What is your country's name?")
+    player.leader = enter("What is your country's leader named?")
+    player.name = enter("What is your country's name?")
 
-    #player.race = carosel("Select your race:", races)
+    player.race = carosel("Select your race:", races)
 
 #init()
 #begin()
@@ -154,19 +155,32 @@ class Application:
 
         #2: Load an ui file
         builder.add_from_file('ConquestUI.ui')
-        
+
         self.mainmenu = self.builder.get_object('Main Menu', self.master)
         self.mapview = self.builder.get_object("Map View", self.master)
         self.builder.connect_callbacks(self)
+        self.refresh()
         self.Main_Menu()
+        self.island1 = tk.PhotoImage(file="Images/Island 1.png")
 
 
     def refresh(self):
         self.builder.get_variable("GoldString").set(str(player.GPT()) + "/t")
         self.builder.get_variable("CultureString").set(str(player.CPT()) + "/t")
+        self.builder.get_variable("RaceString").set(str(player.race.name))
+        self.builder.get_variable("LeaderString").set(str(player.leader))
+        self.builder.get_variable("NationString").set(str(player.name))
 
     def Map_View(self):
         self.mapview.tkraise()
+
+    def Map_World(self):
+        for x in range(1,4):
+            for y in range(1,4):
+                self.builder.get_object("MapButton" + str(x) + "-" + str(y), "Map View").config(image=self.island1)
+
+    def Map_Island(self, island):
+        pass
 
     def Main_Menu(self):
         self.mainmenu.tkraise()
