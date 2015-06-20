@@ -123,13 +123,14 @@ def init():
 
 def terrain(size, blobsize):
     global world
-    world = []
-    for i in range(1, size):
+    world = {}
+    for i in range(1, size + 1):
         island = []
-        for j in range(1, blobsize):
+        for j in range(1, blobsize + 1):
             place = location(r.randint(-2, 10), r.randint(0, 10), bool(r.getrandbits(1)), r.randint(1, 10))
             island.append(place)
-        world.append(island)
+            print(j)
+        world["island " + str(i)] = island
 
 
 def begin():
@@ -173,14 +174,23 @@ class Application:
 
     def Map_View(self):
         self.mapview.tkraise()
+        self.Map_World()
 
     def Map_World(self):
+        islands = []
+        for key in world:
+            islands.append(key)
+        print(islands)
+        islandno = 0
         for x in range(1,4):
             for y in range(1,4):
+                islandno += 1
+                print(islandno)
                 self.builder.get_object("MapButton" + str(x) + "-" + str(y), "Map View").config(image=self.island1)
+                self.builder.get_object("MapButton" + str(x) + "-" + str(y), "Map View").config(command= lambda: self.Map_Island(islands[islandno]))
 
     def Map_Island(self, island):
-        pass
+        print(island)
 
     def Main_Menu(self):
         self.mainmenu.tkraise()
@@ -192,7 +202,7 @@ class Application:
 
 
 
-
+terrain(9, 9)
 init()
 begin()
 root = tk.Tk()
